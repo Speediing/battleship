@@ -32,4 +32,8 @@ def test_move_boat():
 
 def test_set_boat_location():
     player = Player()
-    assert player.set_opponent_boat_location("B", "5", "y") ==  ("B", "5", "y")
+    assert player.set_opponent_boat_location(("B", "5", "y")) ==  ("B", "5", "y")
+
+def test_get_name():
+    player = Player()
+    assert player.get_name() == "name"

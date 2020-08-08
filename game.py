@@ -8,25 +8,49 @@ class Game:
         self.player2_board = Board()
 
     def place_boat(self, player):
+        """
+        Allows a player to pick the location of their boat
+
+        Args:
+            player: player object who will pick the location
+
+        Returns:
+            Tuple of (x_location, y_location, rotation) of the location of the boat 
+        """
         os.system('clear')
+        print(player.get_name()+ " it's time to pick your ship's location! \nUse W to go up, \nS to go down, \nA to go left, \nD to go right, \nand R to rotate your ship 90 degrees. \nPress E when you have made your decision!\n\n")
         boat_location = player.get_boat_location()
         (x, y, r) = boat_location
         print(self.render_board_with_boat( x, y, r))
         while 1:
             move = input('')
             os.system('clear')
+            print(player.get_name()+ " it's time to pick your ship's location! \nUse W to go up, \nS to go down, \nA to go left, \nD to go right, \nand R to rotate your ship 90 degrees. \nPress E when you have made your decision!\n\n")
             boat_location = player.move_boat(move)
             (x, y, r) = boat_location
             print(self.render_board_with_boat( x, y, r))
-            if move is "e":
+            if move == "e":
                 break
         return player.get_boat_location()
 
+
     def start_game(self, player_1_name, player_2_name):
+        """
+        Starts a new Game
+
+        Args:
+            player_1_name: name of player 1
+            player_2_name: name of player 2
+
+        Returns:
+            
+        """
         player_1 = Player(player_1_name)
         player_2 = Player(player_2_name)
-        self.place_boat(player_1)
-        self.place_boat(player_2)
+        player_1_location = self.place_boat(player_1)
+        player_2_location = self.place_boat(player_2)
+        player_1.set_opponent_boat_location(player_2_location)
+        player_2.set_opponent_boat_location(player_1_location)
 
     def render_board_with_boat(self, x, y, rotation):
         """

@@ -34,11 +34,11 @@ class Board:
         """
         xIndex = self.x_col.index(x)
         yIndex = self.y_col.index(y)
-        if rotation is "x":
+        if rotation == "x":
             self.board[x][y] = "🚢"
             self.board[self.x_col[xIndex+1]][y] = "🚢"
             self.board[self.x_col[xIndex+2]][y] = "🚢"
-        if rotation is "y":
+        if rotation == "y":
             self.board[x][y] = "🚢"
             self.board[x][self.y_col[yIndex+1]] = "🚢"
             self.board[x][self.y_col[yIndex+2]] = "🚢"
