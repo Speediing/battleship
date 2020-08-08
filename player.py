@@ -11,5 +11,20 @@ class Player:
     def move_boat_right(self):
         xIndex = self.x_col.index(self.boat_x_position)
         self.boat_x_position = self.x_col[xIndex + 1]
-        return self.boat_x_position
-    
+        return (self.boat_x_position, self.boat_y_position)
+
+    def move_boat_left(self):
+        xIndex = self.x_col.index(self.boat_x_position)
+        self.boat_x_position = self.x_col[xIndex - 1]
+        return (self.boat_x_position, self.boat_y_position)
+
+    def move_boat_up(self):
+        yIndex = self.y_col.index(self.boat_y_position)
+        self.boat_y_position = self.y_col[yIndex - 1]
+        return (self.boat_x_position, self.boat_y_position)
+
+    def move_boat_down(self):
+        yIndex = self.y_col.index(self.boat_y_position)
+        self.boat_y_position = self.y_col[yIndex + 1]
+        return (self.boat_x_position, self.boat_y_position)
+ 
