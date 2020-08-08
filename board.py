@@ -33,16 +33,17 @@ class Board:
         Returns:
             Dictionary to represent board state with boat
         """
-        xIndex = self.x_col.index(x)
-        yIndex = self.y_col.index(y)
+        print(x,y)
+        x_index = self.x_col.index(x)
+        y_index = self.y_col.index(y)
         if rotation == "x":
             self.board[x][y] = item
-            self.board[self.x_col[xIndex+1]][y] = item
-            self.board[self.x_col[xIndex+2]][y] = item
+            self.board[self.x_col[x_index+1]][y] = item
+            self.board[self.x_col[x_index+2]][y] = item
         if rotation == "y":
             self.board[x][y] = item
-            self.board[x][self.y_col[yIndex+1]] = item
-            self.board[x][self.y_col[yIndex+2]] = item
+            self.board[x][self.y_col[y_index+1]] = item
+            self.board[x][self.y_col[y_index+2]] = item
         return self.board
 
     def place_missile(self,x,y,item):

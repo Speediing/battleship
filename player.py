@@ -31,8 +31,12 @@ class Player:
         Returns:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """  
-        xIndex = self.x_col.index(self.boat_x_position)
-        self.boat_x_position = self.x_col[xIndex + 1]
+        #Catch for going over the edge
+        if self.boat_x_position == "F" and self.boat_r_position == "x":
+            self.boat_x_position = "A"
+        else:
+            xIndex = self.x_col.index(self.boat_x_position)
+            self.boat_x_position = self.x_col[xIndex + 1]
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
 
     def move_boat_left(self):
@@ -42,8 +46,12 @@ class Player:
         Returns:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """  
-        xIndex = self.x_col.index(self.boat_x_position)
-        self.boat_x_position = self.x_col[xIndex - 1]
+        #Catch for going over the edge
+        if self.boat_x_position == "A" and self.boat_r_position == "x":
+            self.boat_x_position = "F"
+        else:
+            xIndex = self.x_col.index(self.boat_x_position)
+            self.boat_x_position = self.x_col[xIndex - 1]
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
 
     def move_boat_up(self):
@@ -53,6 +61,9 @@ class Player:
         Returns:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """  
+        #Catch for going over the edge
+        if self.boat_y_position == "1" and self.boat_r_position == "y":
+            self.boat_y_position = "7"
         yIndex = self.y_col.index(self.boat_y_position)
         self.boat_y_position = self.y_col[yIndex - 1]
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
@@ -64,8 +75,12 @@ class Player:
         Returns:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """  
-        yIndex = self.y_col.index(self.boat_y_position)
-        self.boat_y_position = self.y_col[yIndex + 1]
+        #Catch for going over the edge
+        if self.boat_y_position == "6" and self.boat_r_position == "y":
+            self.boat_y_position = "1"
+        else:
+            yIndex = self.y_col.index(self.boat_y_position)
+            self.boat_y_position = self.y_col[yIndex + 1]
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
  
     def move_boat(self, move):
@@ -97,6 +112,18 @@ class Player:
         Returns:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """  
+        #Move boat back if rotation will push it off the edge
+        if ((self.boat_y_position == "7" ) and (self.boat_r_position == "x")):
+            self.move_boat_up()
+        if ((self.boat_y_position == "8" ) and (self.boat_r_position == "x")):
+            self.move_boat_up()
+            self.move_boat_up() 
+        if ((self.boat_x_position == "G" ) and (self.boat_r_position == "y")):
+            self.move_boat_left()
+        if ((self.boat_x_position == "H" ) and (self.boat_r_position == "y")):
+            self.move_boat_left()
+            self.move_boat_left()
+        #Perform rotation
         if self.boat_r_position == "y":
             self.boat_r_position = "x"
         else:
