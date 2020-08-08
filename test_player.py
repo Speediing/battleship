@@ -1,5 +1,9 @@
 from player import *
 
+def test_get_boat_location():
+    player = Player()
+    assert player.get_boat_location() == ("A", "1", "x")
+
 def test_move_boat_right():
     player = Player()
     assert player.move_boat_right() == ("B", "1", "x")
@@ -24,4 +28,8 @@ def test_rotate_boat():
 
 def test_move_boat():
     player = Player()
-    assert player.move_boat("s") = ("A", "2", "x")
+    assert player.move_boat("s") == ("A", "2", "x")
+
+def test_set_boat_location():
+    player = Player()
+    assert player.set_opponent_boat_location("B", "5", "y") ==  ("B", "5", "y")
