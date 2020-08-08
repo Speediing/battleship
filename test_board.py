@@ -77,3 +77,7 @@ def test_board():
     "7":"*",
     "8":"*"}
 }
+
+def test_place_boat():
+    test_board = Board()
+    assert test_board.place_boat("B","3","x") == {}
