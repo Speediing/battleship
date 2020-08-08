@@ -145,4 +145,10 @@ class Player:
         else:
             self.board.place_missile(x,y,"⭕")
             return False
+    
+    def has_player_won(self):
+        if (self.missile_hits >= 3):
+            return True
+        else:
+            return False
         
