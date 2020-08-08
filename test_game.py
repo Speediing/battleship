@@ -1,5 +1,7 @@
-import ast
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 from game import *
+
 
 def test_render_empty_game():
     test_game = Game()
@@ -16,6 +18,82 @@ def test_render_empty_game():
             
 -
 3      *       *       *       *       *       *       *       *   
+-
+            
+-
+4      *       *       *       *       *       *       *       *   
+-
+            
+-
+5      *       *       *       *       *       *       *       *   
+-
+            
+-
+6      *       *       *       *       *       *       *       *   
+-
+            
+-
+7      *       *       *       *       *       *       *       *   
+-
+            
+-
+8      *       *       *       *       *       *       *       *   
+-
+            
+''')
+
+def test_render_game_boat_x():
+    test_game = Game()
+    assert test_game.render_board_with_boat("A","1","x") == ('''
+   |   A   |   B   |   C   |   D   |   E   |   F   |   G   |   H   |
+-
+1      🚢       🚢       🚢       *       *       *       *       *   
+-
+            
+-
+2      *       *       *       *       *       *       *       *   
+-
+            
+-
+3      *       *       *       *       *       *       *       *   
+-
+            
+-
+4      *       *       *       *       *       *       *       *   
+-
+            
+-
+5      *       *       *       *       *       *       *       *   
+-
+            
+-
+6      *       *       *       *       *       *       *       *   
+-
+            
+-
+7      *       *       *       *       *       *       *       *   
+-
+            
+-
+8      *       *       *       *       *       *       *       *   
+-
+            
+''')
+
+def test_render_game_boat_y():
+    test_game = Game()
+    assert test_game.render_board_with_boat("A","1","y") == ('''
+   |   A   |   B   |   C   |   D   |   E   |   F   |   G   |   H   |
+-
+1      🚢       *       *       *       *       *       *       *   
+-
+            
+-
+2      🚢       *       *       *       *       *       *       *   
+-
+            
+-
+3      🚢       *       *       *       *       *       *       *   
 -
             
 -
