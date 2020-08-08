@@ -61,4 +61,13 @@ class Board:
         return self.board
 
     def get_position(self,x,y):
+        """
+        Returns value of item at location
+
+        Args:
+            x: x value of the item. Should be of ["A","B","C","D","E","F","G","H"]
+            y: y value of the item. Should be of ["1","2","3","4","5","6","7","8"]
+        Returns:
+            value at location
+        """
         return self.board[x][y]

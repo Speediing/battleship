@@ -128,6 +128,15 @@ class Game:
         return board_string
 
     def validate_missile_input(self, input):
+        """
+        Validates missile user input is valid
+
+        Args:
+            input: Input from user
+
+        Returns:
+            Boolean of input validity
+        """
         if(input[0] in ["A","B","C","D","E","F","G","H"] and input[1] in ["1","2","3","4","5","6","7","8"]):
             return True
         else:

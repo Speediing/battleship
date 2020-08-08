@@ -1,6 +1,11 @@
 import os
 from game import *
 def main():
+    """
+     Game entry point here
+     
+     """
+     
     os.system('clear')
     print('''
  WELCOME TO JASON'S BATTLESHIP

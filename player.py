@@ -164,9 +164,20 @@ class Player:
         return  (self.opponent_boat_location)
    
     def fire_missile(self, x, y):
+        """
+        Fires a 
+
+        Args:
+            x: x location of missile
+            y: y location of missile
+
+        Returns:
+            Boolean of whether the missile hit a boat
+        """  
         opponent_spot = self.opponent_board.get_position(x,y)
         if opponent_spot == "x":
             self.board.place_missile(x,y,"🚢")
+            self.opponent_board.place_missile(x,y,"HIT")
             self.missile_hits += 1
             return True
         else:
@@ -174,6 +185,12 @@ class Player:
             return False
     
     def has_player_won(self):
+        """
+        Returns if the user has hit 3 missiles
+
+        Returns:
+            Boolean of whether the user has won
+        """  
         if (self.missile_hits >= 3):
             return True
         else:
