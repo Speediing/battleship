@@ -1,2 +1,13 @@
 
+class Player:
+
+    def __init__(self):
+        self.boat_x_position = "A"
+        self.boat_y_position = "1"
+        self.boat_r_position = "x"
+        self.x_col = ["A","B","C","D","E","F","G","H"]
+        self.y_col = ["1","2","3","4","5","6","7","8"]
+        
+    def move_boat_right(self):
+        ...
     
