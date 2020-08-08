@@ -31,22 +31,22 @@ class Player:
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
  
     def move_boat(self, move):
-        if move is "w":
+        if move == "w":
             self.move_boat_up()
-        if move is "a":
+        if move == "a":
             self.move_boat_left()
-        if move is "s":
+        if move == "s":
             self.move_boat_down()
-        if move is "d":
+        if move == "d":
             self.move_boat_right()
-        if move is "r":
+        if move == "r":
             self.rotate_boat()
-        if move is "e":
+        if move == "e":
             print("Save Board for user")
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
 
     def rotate_boat(self):
-        if self.boat_r_position is "y":
+        if self.boat_r_position == "y":
             self.boat_r_position = "x"
         else:
             self.boat_r_position = "y"
@@ -56,4 +56,5 @@ class Player:
         return  (self.boat_x_position, self.boat_y_position, self.boat_r_position)
 
     def set_opponent_boat_location(self, x, y, r):
-        ...
+        self.opponent_boat_location = (x,y,r)
+        return  (self.opponent_boat_location)

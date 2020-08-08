@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 from game import *
-
+from player import *
+import io
 
 def test_render_empty_game():
     test_game = Game()
