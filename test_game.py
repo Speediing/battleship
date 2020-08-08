@@ -118,3 +118,12 @@ def test_render_game_boat_y():
 -
             
 ''')
+
+def test_validate_missile_input_true():
+    test_game = Game()
+    assert test_game.validate_missile_input("A1") == True
+
+
+def test_validate_missile_input_false():
+    test_game = Game()
+    assert test_game.validate_missile_input("Bad") == False
