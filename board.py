@@ -58,3 +58,6 @@ class Board:
         """
         self.board[x][y] = item
         return self.board
+
+    def get_position(self,x,y):
+        return self.board[x][y]
