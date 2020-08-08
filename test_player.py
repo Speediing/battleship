@@ -51,3 +51,16 @@ def test_fire_missile_false():
     player = Player()
     player.set_opponent_boat_location(("A","1","x"))
     assert player.fire_missile("E","1") == False
+
+def test_has_player_won_false():
+    player = Player()
+    player.set_opponent_boat_location(("A","1","x"))
+    assert player.has_player_won() == False
+
+def test_has_player_won_true():
+    player = Player()
+    player.set_opponent_boat_location(("A","1","x"))
+    player.fire_missile("A","1")
+    player.fire_missile("B","1")
+    player.fire_missile("C","1")
+    assert player.has_player_won() == True
