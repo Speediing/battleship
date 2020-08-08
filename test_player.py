@@ -20,5 +20,4 @@ def test_move_boat_up():
 
 def test_rotate_boat():
     player = Player()
-    player.rotate_boat()
     assert player.rotate_boat() == ("A", "1", "y")

@@ -29,4 +29,8 @@ class Player:
         return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
  
     def rotate_boat(self):
-        ...
+        if self.boat_r_position is "y":
+            self.boat_r_position = "x"
+        else:
+            self.boat_r_position = "y"
+        return (self.boat_x_position, self.boat_y_position, self.boat_r_position)
