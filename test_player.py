@@ -2,4 +2,18 @@ from player import *
 
 def test_move_boat_right():
     player = Player()
-    assert player.move_boat_right() == "B"
+    assert player.move_boat_right() == ("B", "1")
+
+def test_move_boat_left():
+    player = Player()
+    player.move_boat_right()
+    assert player.move_boat_left() == ("A", "1")
+
+def test_move_boat_down():
+    player = Player()
+    assert player.move_boat_down() == ("A", "2")
+
+def test_move_boat_up():
+    player = Player()
+    player.move_boat_down()
+    assert player.move_boat_up() == ("A", "1")
