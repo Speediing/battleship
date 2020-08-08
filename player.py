@@ -13,6 +13,7 @@ class Player:
         self.y_col = ["1","2","3","4","5","6","7","8"]
         self.name = name
         self.opponent_boat_location = ("A","1","x")
+        self.missile_hits = 0
         
     def get_name(self):
         """
@@ -134,5 +135,14 @@ class Player:
         self.opponent_boat_location = location
         self.opponent_board.place_item(location[0],location[1],location[2],"x")
         return  (self.opponent_boat_location)
-
+   
+    def fire_missile(self, x, y):
+        opponent_spot = self.opponent_board.get_position(x,y)
+        if opponent_spot == "x":
+            self.board.place_missile(x,y,"🚢")
+            self.missile_hits += 1
+            return True
+        else:
+            self.board.place_missile(x,y,"⭕")
+            return False
         
