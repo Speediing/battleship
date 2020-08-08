@@ -4,7 +4,35 @@ import os
 
 class Game:
 
-    def make_move(self, player):
+    def start_game(self, player_1_name, player_2_name):
+        """
+        Starts a new Game and loops until either player has made a winning move
+
+        Args:
+            player_1_name: name of player 1
+            player_2_name: name of player 2
+            
+        """
+        player_1 = Player(player_1_name)
+        player_2 = Player(player_2_name)
+        player_1_boat_location = self.place_boat(player_1)
+        player_2_boat_location = self.place_boat(player_2)
+        player_1.set_opponent_boat_location(player_2_boat_location)
+        player_2.set_opponent_boat_location(player_1_boat_location)
+        while 1:
+            if (self.take_turn(player_1)): break
+            if (self.take_turn(player_2)): break
+
+    def take_turn(self, player):
+        """
+        Player makes a move
+
+        Args:
+            player: player object who will take their turn
+
+        Returns:
+            Boolean of whether the user has made a winning move
+        """
         os.system('clear')
         print(self.render_board(player.get_board() ))
         fire_spot = input(player.get_name()+ " it's time to pick a location to fire! Enter your location like: 'B5'\n\n")
@@ -20,6 +48,10 @@ class Game:
             input("You hit their ship, nice job! Press enter to end your turn")
         else:
             input("You missed :( Press enter to end your turn")
+        if player.has_player_won():
+            print(player.get_name() + " has sunk the battle ship and won!")
+            return True
+        return False
 
     def place_boat(self, player):
         """
@@ -46,28 +78,6 @@ class Game:
             if move == "e":
                 break
         return player.get_boat_location()
-
-
-    def start_game(self, player_1_name, player_2_name):
-        """
-        Starts a new Game
-
-        Args:
-            player_1_name: name of player 1
-            player_2_name: name of player 2
-
-        Returns:
-            
-        """
-        player_1 = Player(player_1_name)
-        player_2 = Player(player_2_name)
-        player_1_location = self.place_boat(player_1)
-        player_2_location = self.place_boat(player_2)
-        player_1.set_opponent_boat_location(player_2_location)
-        player_2.set_opponent_boat_location(player_1_location)
-        while 1:
-            self.make_move(player_1)
-            self.make_move(player_2)
 
     def render_board_with_boat(self, x, y, rotation):
         """
