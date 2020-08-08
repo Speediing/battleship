@@ -3,9 +3,23 @@ from player import *
 import os
 
 class Game:
-    def __init__(self):
-        self.player1_board = Board()
-        self.player2_board = Board()
+
+    def make_move(self, player):
+        os.system('clear')
+        print(self.render_board(player.get_board() ))
+        fire_spot = input(player.get_name()+ " it's time to pick a location to fire! Enter your location like: 'B5'\n\n")
+        while 1:
+            if self.validate_missile_input(fire_spot) == True:
+                break
+            else:
+                fire_spot = input(player.get_name()+ " your location was incorrectly formatted! Enter your location like: 'B5'\n\n")
+        result = player.fire_missile(fire_spot[0], fire_spot[1])
+        os.system('clear')
+        print(self.render_board(player.get_board()))
+        if result:
+            input("You hit their ship, nice job! Press enter to end your turn")
+        else:
+            input("You missed :( Press enter to end your turn")
 
     def place_boat(self, player):
         """
@@ -51,10 +65,13 @@ class Game:
         player_2_location = self.place_boat(player_2)
         player_1.set_opponent_boat_location(player_2_location)
         player_2.set_opponent_boat_location(player_1_location)
+        while 1:
+            self.make_move(player_1)
+            self.make_move(player_2)
 
     def render_board_with_boat(self, x, y, rotation):
         """
-        Renders the board with the chosen boat location
+        Renders the board with the chosen boat location when starting the game
 
         Args:
             x: x value of the boat origin. Should be of ["A","B","C","D","E","F","G","H"]
@@ -65,7 +82,7 @@ class Game:
             String ready to be printed to console
         """
         dummy_board = Board()
-        dummy_board.place_boat(x, y, rotation)
+        dummy_board.place_item(x, y, rotation, "🚢")
         return self.render_board(dummy_board.board)
 
     def render_board(self, board):
@@ -99,4 +116,9 @@ class Game:
             
 '''
         return board_string
-        
+
+    def validate_missile_input(self, input):
+        if(input[0] in ["A","B","C","D","E","F","G","H"] and input[1] in ["1","2","3","4","5","6","7","8"]):
+            return True
+        else:
+            return False
