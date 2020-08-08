@@ -1,7 +1,11 @@
 
+from board import *
+
 class Player:
 
     def __init__(self, name="name"):
+        self.board = Board()
+        self.opponent_board = Board()
         self.boat_x_position = "A"
         self.boat_y_position = "1"
         self.boat_r_position = "x"
@@ -107,6 +111,16 @@ class Player:
         """  
         return  (self.boat_x_position, self.boat_y_position, self.boat_r_position)
 
+    def get_board(self):
+        """
+        Gets the current board
+
+        Returns:
+            Dictionary of current board
+        """  
+        return  self.board.board
+
+
     def set_opponent_boat_location(self, location):
         """
         Gets name of player
@@ -118,4 +132,7 @@ class Player:
             Tuple of (x_location, y_location, rotation) of the location of the opponents boat 
         """  
         self.opponent_boat_location = location
+        self.opponent_board.place_item(location[0],location[1],location[2],"x")
         return  (self.opponent_boat_location)
+
+        
