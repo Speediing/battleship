@@ -33,7 +33,6 @@ class Board:
         Returns:
             Dictionary to represent board state with boat
         """
-        print(x,y)
         x_index = self.x_col.index(x)
         y_index = self.y_col.index(y)
         if rotation == "x":

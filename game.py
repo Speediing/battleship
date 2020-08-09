@@ -64,14 +64,14 @@ class Game:
             Tuple of (x_location, y_location, rotation) of the location of the boat 
         """
         os.system('clear')
-        print(player.get_name()+ " it's time to pick your ship's location! \nUse W to go up, \nS to go down, \nA to go left, \nD to go right, \nand R to rotate your ship 90 degrees. \nPress E when you have made your decision!\n\n")
+        print(player.get_name()+ " it's time to pick your ship's location! \nUse w to go up, \ns to go down, \na to go left, \nd to go right, \nand r to rotate your ship 90 degrees. \nPress e when you have made your decision!\n\n")
         boat_location = player.get_boat_location()
         (x, y, r) = boat_location
         print(self.render_board_with_boat( x, y, r))
         while 1:
             move = input('')
             os.system('clear')
-            print(player.get_name()+ " it's time to pick your ship's location! \nUse W to go up, \nS to go down, \nA to go left, \nD to go right, \nand R to rotate your ship 90 degrees. \nPress E when you have made your decision!\n\n")
+            print(player.get_name()+ " it's time to pick your ship's location! \nUse w to go up, \ns to go down, \na to go left, \nd to go right, \nand r to rotate your ship 90 degrees. \nPress e when you have made your decision!\n\n")
             boat_location = player.move_boat(move)
             (x, y, r) = boat_location
             print(self.render_board_with_boat( x, y, r))
